@@ -22,7 +22,8 @@
         "nunomaduro/collision": "^7.0",
         "nunomaduro/larastan": "^2.0",
         "phpunit/phpunit": "^10.1",
-        "spatie/laravel-ignition": "^2.0"
+        "spatie/laravel-ignition": "^2.0",
+        "squizlabs/php_codesniffer": "^3.7"
     },
     "autoload": {
         "psr-4": {
@@ -52,6 +53,9 @@
         ],
         "phpstan": [
             "./vendor/bin/phpstan analyse"
+        ],
+        "phpcs": [
+            "./vendor/bin/phpcs --standard=PSR2 --ignore=*/vendor/*,*/node_modules/*,*/public*,*/storage/*,*.blade.php,*.js,*.ts ."
         ]
     },
     "extra": {

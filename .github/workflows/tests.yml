@@ -38,7 +38,7 @@ jobs:
     - name: Run Testsuite
       run: vendor/bin/phpunit tests/
 
-  phpstan:
+  static checks:
     runs-on: ubuntu-latest
     container:
       image: kirschbaumdevelopment/laravel-test-runner:8.2
@@ -54,3 +54,6 @@ jobs:
 
     - name: Run phpstan
       run: ./vendor/bin/phpstan analyse
+  
+    - name: Run phpstan
+      run: ./vendor/bin/phpcs --standard=PSR2 --ignore=*/vendor/*,*/node_modules/*,*/public*,*/storage/*,*.blade.php,*.js,*.ts .
