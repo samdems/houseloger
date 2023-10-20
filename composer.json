@@ -59,6 +59,9 @@
         ],
         "pint":[
             "./vendor/bin/pint --preset psr12"
+        ],
+        "phpunit":[
+            "./vendor/bin/phpunit"
         ]
     },
     "extra": {
