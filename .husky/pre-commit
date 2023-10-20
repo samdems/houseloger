@@ -1,0 +1,6 @@
+#!/usr/bin/env sh
+. "$(dirname -- "$0")/_/husky.sh"
+
+./vendor/bin/sail composer phpcs
+./vendor/bin/sail composer pint
+./vendor/bin/sail composer phpstan
