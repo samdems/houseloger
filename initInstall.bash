@@ -4,3 +4,5 @@ docker run --rm \
     -w /opt \
     laravelsail/php80-composer:latest \
     composer install --ignore-platform-reqs
+
+./vendor/bin/sail npm install
