@@ -17,7 +17,7 @@
 				"open-southeners.laravel-pint",
 				"swyphcosmo.spellchecker",
 				"emallin.phpunit",
-				"recca0120.vscode-phpunit",
+				"recca0120.vscode-phpunit"
 			],
 			"settings": {
 				"phpunit.command": "./vendor/bin/phpunit"
