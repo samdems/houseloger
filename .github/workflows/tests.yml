@@ -52,8 +52,13 @@ jobs:
       run: |
         composer install --no-scripts
 
+    - name: Run pint
+      run: ./vendor/bin/pint --test
+
     - name: Run phpstan
       run: ./vendor/bin/phpstan analyse
   
     - name: Run phpcs
-      run: ./vendor/bin/phpcs --standard=PSR2 --ignore=*/vendor/*,*/node_modules/*,*/public*,*/storage/*,*.blade.php,*.js,*.ts .
+      run: ./vendor/bin/phpcs --standard=PSR12 --ignore=*/vendor/*,*/node_modules/*,*/public*,*/storage/*,*.blade.php,*.js,*.ts .
+
+      
