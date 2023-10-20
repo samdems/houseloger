@@ -53,7 +53,7 @@ jobs:
         composer install --no-scripts
 
     - name: Run pint
-      run: ./vendor/bin/pint --test
+      run: ./vendor/bin/pint --test --preset psr12
 
     - name: Run phpstan
       run: ./vendor/bin/phpstan analyse
