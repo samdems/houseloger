@@ -1,0 +1,64 @@
+on: push
+name: CI
+jobs:
+  phpunit:
+    runs-on: ubuntu-latest
+    container:
+      image: kirschbaumdevelopment/laravel-test-runner:8.2
+ 
+    services:
+      mysql:
+        image: mysql:8
+        env:
+          MYSQL_ROOT_PASSWORD: password
+          MYSQL_DATABASE: testing
+        ports:
+          - 33306:3306
+        options: --health-cmd="mysqladmin ping" --health-interval=10s --health-timeout=5s --health-retries=3
+ 
+    steps:
+    - uses: actions/checkout@v1
+      with:
+        fetch-depth: 1
+                 
+    - name: Install composer dependencies
+      run: |
+        composer install --no-scripts
+
+    - name: Install node dependencies
+      run: |
+         npm install
+         npm run build
+
+    - name: Prepare Laravel Application
+      run: |
+        cp .env.ci .env
+        php artisan key:generate
+ 
+    - name: Run Testsuite
+      run: vendor/bin/phpunit tests/
+
+  static-checks:
+    runs-on: ubuntu-latest
+    container:
+      image: kirschbaumdevelopment/laravel-test-runner:8.2
+ 
+    steps:
+    - uses: actions/checkout@v1
+      with:
+        fetch-depth: 1
+                 
+    - name: Install composer dependencies
+      run: |
+        composer install --no-scripts
+
+    - name: Run pint
+      run: ./vendor/bin/pint --test --preset psr12
+
+    - name: Run phpstan
+      run: ./vendor/bin/phpstan analyse
+  
+    - name: Run phpcs
+      run: ./vendor/bin/phpcs --standard=PSR12 --ignore=*/vendor/*,*/node_modules/*,*/public*,*/storage/*,*.blade.php,*.js,*.ts .
+
+      
