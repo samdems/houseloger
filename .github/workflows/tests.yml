@@ -20,14 +20,16 @@ jobs:
     - uses: actions/checkout@v1
       with:
         fetch-depth: 1
- 
+        
+     - name: Install node dependencies
+      run: |
+         npm run dev
+         
     - name: Install composer dependencies
       run: |
         composer install --no-scripts
  
-    - name: Install node dependencies
-      run: |
-         npm run dev
+
     - name: Prepare Laravel Application
       run: |
         cp .env.ci .env
