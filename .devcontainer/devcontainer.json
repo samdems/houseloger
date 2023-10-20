@@ -8,14 +8,20 @@
 	"workspaceFolder": "/var/www/html",
 	"customizations": {
 		"vscode": {
-			"extensions": [
+			"extensions": [sssssssssssssssssssssssssssssssssssssssssssssssssssssssssssss
 				"mikestead.dotenv",
 				"amiralizadeh9480.laravel-extra-intellisense",
 				"ryannaddy.laravel-artisan",
 				"onecentlin.laravel5-snippets",
-				"onecentlin.laravel-blade"
+				"onecentlin.laravel-blade",
+      	"open-southeners.laravel-pint",
+        "swyphcosmo.spellchecker",
+        "emallin.phpunit",
+        "recca0120.vscode-phpunit",
 			],
-			"settings": {}
+			"settings": {
+				"phpunit.command": "./vendor/bin/phpunit"
+			}
 		}
 	},
 	"remoteUser": "sail",
