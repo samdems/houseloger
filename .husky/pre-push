@@ -2,4 +2,3 @@
 . "$(dirname -- "$0")/_/husky.sh"
 
 ./vendor/bin/sail phpunit
-exit 1
