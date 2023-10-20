@@ -1,34 +1,26 @@
+// https://aka.ms/devcontainer.json
 {
 	"name": "Existing Docker Compose (Extend)",
-
 	"dockerComposeFile": [
 		"../docker-compose.yml"
 	],
-
 	"service": "laravel.test",
 	"workspaceFolder": "/var/www/html",
 	"customizations": {
 		"vscode": {
 			"extensions": [
-				"neilbrayfield.php-docblocker",
-				"shevaua.phpcs",
-				"xdebug.php-debug"
-			]
-		},
-		"launch":{
-			"version": "0.2.0",
-			"configurations": [
-			  {
-				"name": "Listen for Xdebug",
-				"type": "php",
-				"request": "launch",
-				"port": 9003,
-				"pathMappings": {
-				  "/var/www/html": "${workspaceFolder}"
-				},
-				"hostname": "0.0.0.0"
-			  },
-			]
+				// "mikestead.dotenv",
+				// "amiralizadeh9480.laravel-extra-intellisense",
+				// "ryannaddy.laravel-artisan",
+				// "onecentlin.laravel5-snippets",
+				// "onecentlin.laravel-blade"
+			],
+			"settings": {}
 		}
-	}
+	},
+	"remoteUser": "sail",
+	"postCreateCommand": "chown -R 1000:1000 /var/www/html"
+	// "forwardPorts": [],
+	// "runServices": [],
+	// "shutdownAction": "none",
 }
