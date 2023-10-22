@@ -21,8 +21,8 @@ jobs:
     steps:
     - name: setup chrome
       run: | 
-           sudo apt-get update
-           sudo apt-get -y install libnss3 chromium-browser
+           apt-get update
+           apt-get -y install libnss3 chromium-browser
 
     - uses: actions/checkout@v1
       with:
