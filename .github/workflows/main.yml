@@ -19,6 +19,11 @@ jobs:
         options: --health-cmd="mysqladmin ping" --health-interval=10s --health-timeout=5s --health-retries=3
  
     steps:
+    - name: setup chrome
+      run: | 
+           sudo apt-get update
+           sudo apt-get -y install libnss3 chromium-browser
+
     - uses: actions/checkout@v1
       with:
         fetch-depth: 1
