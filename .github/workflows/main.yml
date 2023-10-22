@@ -22,7 +22,7 @@ jobs:
     - name: setup chrome
       run: | 
            apt-get update
-           apt-get -y install libnss3 chromium-browser chrome-driver
+           apt-get -y install libnss3 chromium-browser chromium-driver
 
     - uses: actions/checkout@v1
       with:
