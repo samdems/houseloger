@@ -19,6 +19,11 @@ jobs:
         options: --health-cmd="mysqladmin ping" --health-interval=10s --health-timeout=5s --health-retries=3
  
     steps:
+    - name: setup chrome
+      run: | 
+           apt-get update
+           apt-get -y install libnss3 chromium-browser
+
     - name: Install ChromeDriver
       run: |
         CHROME_VERSION=$(google-chrome --version | cut -f 3 -d ' ' | cut -d '.' -f 1) \
@@ -30,7 +35,7 @@ jobs:
           && sudo mv chromedriver /usr/local/bin/chromedriver \
           && sudo chmod +x /usr/local/bin/chromedriver \
           && chromedriver --version
-
+          
     - uses: actions/checkout@v1
       with:
         fetch-depth: 1
