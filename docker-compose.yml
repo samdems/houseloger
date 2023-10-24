@@ -57,14 +57,19 @@ services:
             - '${FORWARD_MAILPIT_DASHBOARD_PORT:-8025}:8025'
         networks:
             - sail
-    selenium:
-        image: selenium/standalone-chrome
-        extra_hosts:
-            - 'host.docker.internal:host-gateway'
+    e2e-tests:
+        image: cypress/included:4.8.0
+        working_dir: /e2e
+        entrypoint: cypress open --project /e2e
+        depends_on:
+            - laravel.test
+        network_mode: host
+        environment:
+            CYPRESS_VIDEO: 'false'
+            CYPRESS_BASE_URL: 'http://localhost'
+            DISPLAY:
         volumes:
-            - '/dev/shm:/dev/shm'
-        networks:
-            - sail
+            - ./e2e/:/e2e
 networks:
     sail:
         driver: bridge
